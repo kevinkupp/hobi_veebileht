@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --primary: #d36a49;
+    --primary-hover: #b85437;
+    --bg-light: #faf8f5;
+    --text-dark: #333333;
+    --nav-bg: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+}
+
+h1, h2, h3, .logo {
+    font-family: 'Playfair Display', serif;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    background: var(--nav-bg);
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.aktiivne {
+    color: var(--primary);
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #ffffff;
+    padding: 0.8rem 2.5rem;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background: var(--primary-hover);
+}
+
+.btn-block {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+}
+
+.hero {
+    position: relative;
+    height: calc(100vh - 75px);
+    background-image: url('pildid/foto1.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.tutvustus-sektsioon {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+/* Uus klass, mis hoiab pilte vasakul veerus üksteise all */
+.piltide-veerg {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Ühised stiilid mõlemale pildile */
+.tutvustus-pilt, 
+.tutvustus-pilt2 {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* Esimese pildi taust */
+.tutvustus-pilt {
+    background-image: url('pildid/foto2.jpg');
+}
+
+/* Teise pildi taust */
+.tutvustus-pilt2 {
+    background-image: url('pildid/foto3.jpg');
+}
+
+.tutvustus-tekst {
+    flex: 1.5;
+    min-width: 300px;
+}
+
+.tutvustus-tekst h2 {
+    font-size: 2.8rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.tutvustus-tekst p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.soovitused-bg {
+    position: relative;
+    background-image: url('pildid/foto7.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: calc(100vh - 75px);
+}
+
+.soovitused-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(250, 248, 245, 0.5);
+}
+
+.soovitused-bg .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hobi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.hobi-kaart {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hobi-kaart:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.ikoon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hobi-kaart h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary);
+}
+
+.sobivus {
+    color: #f39c12;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.kontakt-bg {
+    position: relative;
+    background-image: url('pildid/foto8.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: calc(100vh - 75px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.kontakt-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+.kontakt-konteiner {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 3rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.kontakt-konteiner-text {
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.kontakt-konteiner h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+.vorm-grupp {
+    margin-bottom: 1.5rem;
+}
+
+.vorm-grupp label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.sotsiaal {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.sotsiaal a {
+    text-decoration: none;
+    font-size: 1.8rem;
+    margin: 0 0.8rem;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.sotsiaal a:hover {
+    transform: scale(1.2);
+}
+
+#testimonials {
+    height: 600px;
+    background: url("test-bg.jpg");
+}
+#testimonials h2 {
+    color: #fff;
+    text-align: center;
+}
+#testimonials .testimonial {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+#testimonials .testimonial img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.container {
+    margin: auto;
+    max-width: 1100px;
+    padding: 0 20px;
+    overflow: auto;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    .tutvustus-sektsioon {
+        flex-direction: column;
+        text-align: center;
+    }
+}
