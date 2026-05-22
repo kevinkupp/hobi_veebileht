@@ -21,6 +21,9 @@ h1, h2, h3, .logo {
     font-family: 'Playfair Display', serif;
 }
 
+.highlight {
+    font-size: 24px;
+}
 .navbar {
     position: sticky;
     top: 0;
@@ -31,6 +34,18 @@ h1, h2, h3, .logo {
     align-items: center;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     z-index: 1000;
+    animation: anime 0.5s ease forwards;
+}
+
+@keyframes anime {
+    from{
+        opacity: 0;
+        transform: translate(0%, -40px);
+    }
+    to{
+        opacity: 1;
+        transform: translate(0%, 0);
+    }
 }
 
 .logo {
@@ -139,7 +154,6 @@ h1, h2, h3, .logo {
     flex-wrap: wrap;
 }
 
-/* Uus klass, mis hoiab pilte vasakul veerus üksteise all */
 .piltide-veerg {
     flex: 1;
     min-width: 300px;
@@ -148,7 +162,6 @@ h1, h2, h3, .logo {
     gap: 2rem;
 }
 
-/* Ühised stiilid mõlemale pildile */
 .tutvustus-pilt, 
 .tutvustus-pilt2 {
     width: 100%;
@@ -159,12 +172,10 @@ h1, h2, h3, .logo {
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-/* Esimese pildi taust */
 .tutvustus-pilt {
     background-image: url('pildid/foto2.jpg');
 }
 
-/* Teise pildi taust */
 .tutvustus-pilt2 {
     background-image: url('pildid/foto3.jpg');
 }
@@ -191,7 +202,7 @@ h1, h2, h3, .logo {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    min-height: calc(100vh - 75px);
+    min-height: calc(100vh - 84px);
 }
 
 .soovitused-bg::before {
@@ -248,7 +259,7 @@ h1, h2, h3, .logo {
     background-image: url('pildid/foto8.jpg');
     background-size: cover;
     background-position: center;
-    min-height: calc(100vh - 75px);
+    min-height: calc(100vh - 84px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -265,88 +276,84 @@ h1, h2, h3, .logo {
 .kontakt-konteiner {
     position: relative;
     z-index: 1;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
     padding: 3rem;
     border-radius: 12px;
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
+    height: auto; 
     box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.kontakt-konteiner-text {
-    color: var(--text-dark);
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-.kontakt-konteiner h2 {
-    text-align: center;
-    font-size: 2.2rem;
-    color: var(--primary);
-    margin-bottom: 2rem;
-}
-
-.vorm-grupp {
-    margin-bottom: 1.5rem;
-}
-
-.vorm-grupp label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.sotsiaal {
-    margin-top: 2rem;
-    text-align: center;
-}
-
-.sotsiaal a {
-    text-decoration: none;
-    font-size: 1.8rem;
-    margin: 0 0.8rem;
-    transition: transform 0.3s ease;
-    display: inline-block;
-}
-
-.sotsiaal a:hover {
-    transform: scale(1.2);
-}
-
+/* --- ARVUSTUSTE STIIL (VALGE TEKST) --- */
 #testimonials {
-    height: 600px;
-    background: url("test-bg.jpg");
+    padding: 10px 0;
 }
+
 #testimonials h2 {
-    color: #fff;
+    color: #ffffff; /* Pealkiri valge */
     text-align: center;
+    margin-bottom: 20px;
 }
-#testimonials .testimonial {
+
+.testimonials-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.1); /* Läbipaistev kaart */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.testimonial-card:hover {
+    transform: scale(1.02);
+}
+
+.testimonial-header {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 15px 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    color: #1a1a1a;
-    font-weight: 500;
+    gap: 15px;
+    margin-bottom: 10px;
 }
 
-#testimonials .testimonial img {
-    width: 70px;
-    height: 70px;
+.testimonial-header img {
+    width: 60px;
+    height: 60px;
     object-fit: cover;
     border-radius: 50%;
-    flex-shrink: 0;
+    border: 2px solid #ffffff; /* Pildi äär valge */
 }
 
+.user-info h4 {
+    margin: 0;
+    color: #ffffff; /* Nimi valge */
+    font-size: 1.1rem;
+}
+
+.stars {
+    color: #f1c40f;
+    font-size: 1rem;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: #ffffff; /* Tekst valge */
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* --- KONTEINERI JA RESPONSIVE SEADED --- */
 .container {
     margin: auto;
     max-width: 1100px;
     padding: 0 20px;
-    overflow: auto;
 }
 
 @media (max-width: 768px) {
@@ -366,5 +373,34 @@ h1, h2, h3, .logo {
     .tutvustus-sektsioon {
         flex-direction: column;
         text-align: center;
+    }
+}
+
+.video-konteiner {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 0 !important;       /* Kaotab vahe videote vahel */
+    padding: 0 !important;   /* Kaotab sisemise tühimiku */
+    margin: 0 !important;    /* Kaotab välimise tühimiku */
+    line-height: 0;          /* Eemaldab tillukese vahe video all */
+}
+
+.video-konteiner iframe {
+    flex: 1 1 33.333%;       /* Arvutis täpselt kolmandik ekraanist */
+    width: 33.333%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: none;            /* Eemaldab raami */
+    display: block;          /* Muudab video blokk-elemendiks */
+    margin: 0;
+    padding: 0;
+}
+
+/* Mobiilis (telo vaates) */
+@media (max-width: 768px) {
+    .video-konteiner iframe {
+        flex: 1 1 100%;      /* Mobiilis võtab täislaiuse */
+        width: 100%;
     }
 }
