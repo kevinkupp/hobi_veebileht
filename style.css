@@ -21,6 +21,10 @@ h1, h2, h3, .logo {
     font-family: 'Playfair Display', serif;
 }
 
+.highlight {
+    font-size: 24px;
+}
+
 .navbar {
     position: sticky;
     top: 0;
@@ -31,6 +35,18 @@ h1, h2, h3, .logo {
     align-items: center;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     z-index: 1000;
+    animation: anime 0.5s ease forwards;
+}
+
+@keyframes anime {
+    from {
+        opacity: 0;
+        transform: translate(0%, -40px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0%, 0);
+    }
 }
 
 .logo {
@@ -70,6 +86,7 @@ h1, h2, h3, .logo {
     cursor: pointer;
     font-family: inherit;
     font-size: 1rem;
+    text-align: center;
 }
 
 .btn:hover {
@@ -81,10 +98,16 @@ h1, h2, h3, .logo {
     margin-top: 1rem;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
+/* Lisasin siia igaks juhuks kontaktivormi väljade stiilid, kui sul neid vaja läheb */
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-family: inherit;
 }
 
 .section-title {
@@ -139,7 +162,6 @@ h1, h2, h3, .logo {
     flex-wrap: wrap;
 }
 
-/* Uus klass, mis hoiab pilte vasakul veerus üksteise all */
 .piltide-veerg {
     flex: 1;
     min-width: 300px;
@@ -148,7 +170,6 @@ h1, h2, h3, .logo {
     gap: 2rem;
 }
 
-/* Ühised stiilid mõlemale pildile */
 .tutvustus-pilt, 
 .tutvustus-pilt2 {
     width: 100%;
@@ -159,12 +180,10 @@ h1, h2, h3, .logo {
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-/* Esimese pildi taust */
 .tutvustus-pilt {
     background-image: url('pildid/foto2.jpg');
 }
 
-/* Teise pildi taust */
 .tutvustus-pilt2 {
     background-image: url('pildid/foto3.jpg');
 }
@@ -187,7 +206,7 @@ h1, h2, h3, .logo {
 
 .soovitused-bg {
     position: relative;
-    background-image: url('pildid/foto7.jpg');
+    background-image: url('pildid/Gym.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -210,20 +229,44 @@ h1, h2, h3, .logo {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    align-items: stretch;
 }
 
-.hobi-kaart {
+/* --- HOBI KAARDID JA LINGID --- */
+
+.hobi-kaart-link {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block;
+}
+
+/* Eemaldab sinise värvi ja allajoonimise teksti pealt */
+.hobi-kaart-link * {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.hobi-kaart, .hobi-kaart-link .hobi-kaart {
     background: #ffffff;
     padding: 2.5rem;
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.hobi-kaart:hover {
+/* Hover kõigile kaartidele */
+.hobi-kaart:hover, .hobi-kaart-link:hover .hobi-kaart {
     transform: translateY(-8px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.hobi-kaart-link:hover .hobi-kaart {
+    outline: 2px solid var(--primary);
 }
 
 .ikoon {
@@ -234,14 +277,16 @@ h1, h2, h3, .logo {
 .hobi-kaart h3 {
     font-size: 1.5rem;
     margin-bottom: 0.8rem;
-    color: var(--primary);
+    color: var(--primary) !important;
 }
 
 .sobivus {
-    color: #f39c12;
+    color: #f39c12 !important;
     font-size: 1.2rem;
     margin-top: 1rem;
 }
+
+/* --- KONTAKT JA TESTIMONIALS --- */
 
 .kontakt-bg {
     position: relative;
@@ -259,95 +304,248 @@ h1, h2, h3, .logo {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.7);
 }
 
 .kontakt-konteiner {
     position: relative;
     z-index: 1;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(5, 12, 20, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
     padding: 3rem;
-    border-radius: 12px;
+    border-radius: 24px;
     width: 100%;
-    max-width: 500px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    max-width: 1100px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+    display: grid;
+    grid-template-columns: 1.65fr 0.95fr;
+    gap: 2rem;
+    align-items: start;
 }
 
-.kontakt-konteiner-text {
-    color: var(--text-dark);
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    text-align: center;
+.kontakt-box {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.16);
+    padding: 2rem;
+    border-radius: 24px;
+    color: #ffffff;
 }
 
-.kontakt-konteiner h2 {
-    text-align: center;
-    font-size: 2.2rem;
-    color: var(--primary);
-    margin-bottom: 2rem;
+.kontakt-box h3 {
+    margin-top: 0;
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
 }
 
-.vorm-grupp {
-    margin-bottom: 1.5rem;
+.kontakt-box p {
+    margin: 0 0 1rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.92);
 }
 
-.vorm-grupp label {
+.kontakt-box strong {
     display: block;
-    margin-bottom: 0.5rem;
+    color: #ffffff;
     font-weight: 600;
-    color: var(--text-dark);
-}
-
-.sotsiaal {
-    margin-top: 2rem;
-    text-align: center;
-}
-
-.sotsiaal a {
-    text-decoration: none;
-    font-size: 1.8rem;
-    margin: 0 0.8rem;
-    transition: transform 0.3s ease;
-    display: inline-block;
-}
-
-.sotsiaal a:hover {
-    transform: scale(1.2);
+    margin-bottom: 0.25rem;
 }
 
 #testimonials {
-    height: 600px;
-    background: url("test-bg.jpg");
+    padding: 10px 0;
 }
+
 #testimonials h2 {
-    color: #fff;
+    color: #ffffff;
     text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    letter-spacing: 0.02em;
 }
-#testimonials .testimonial {
+
+.testimonials-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    padding: 1.9rem;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 45px rgba(0,0,0,0.3);
+}
+
+.testimonial-header {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 15px 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    color: #1a1a1a;
-    font-weight: 500;
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
-#testimonials .testimonial img {
-    width: 70px;
-    height: 70px;
+.testimonial-header img {
+    width: 62px;
+    height: 62px;
     object-fit: cover;
     border-radius: 50%;
-    flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.95);
 }
 
+.user-info h4 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.stars {
+    color: #f7d354;
+    font-size: 1rem;
+    margin-top: 0.35rem;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: rgba(255,255,255,0.92);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.testimonial-card.testimonial-plain .testimonial-text {
+    margin: 0;
+}
+
+
+/* --- MODAL / HÜPIAKEN --- */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-overlay:target {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-box {
+    background: #fff;
+    width: 90%;
+    max-width: 900px; /* Suurendasin veidi, et video oleks ilusam */
+    padding: 40px 20px 20px 20px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+.modal-close:hover {
+    color: var(--primary);
+}
+
+.modal-video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #000;
+    transform: translateZ(0);
+}
+
+.modal-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: contain; 
+}
+
+/* --- VANAD VIDEOTE KONTEINERID --- */
+.video-konteiner {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px; 
+    padding: 20px;
+    background: #000; 
+}
+
+.video-konteiner iframe {
+    flex: 1 1 calc(33.333% - 10px); 
+    aspect-ratio: 16 / 9;
+    border: none;
+    display: block;
+    object-position: center;
+    object-fit: cover;
+}
+
+/* --- JALUS (FOOTER) --- */
+footer {
+    background: var(--text-dark);
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-links {
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.social-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary);
+}
+
+/* --- KONTEINERI JA RESPONSIVE SEADED --- */
 .container {
     margin: auto;
     max-width: 1100px;
     padding: 0 20px;
-    overflow: auto;
 }
+
+/* --- RESPONSIVE --- */
 
 @media (max-width: 768px) {
     .navbar {
@@ -366,5 +564,12 @@ h1, h2, h3, .logo {
     .tutvustus-sektsioon {
         flex-direction: column;
         text-align: center;
+    }
+    .kontakt-konteiner {
+        grid-template-columns: 1fr;
+    }
+    .video-konteiner iframe {
+        flex: 1 1 100%;
+        width: 100%;
     }
 }
