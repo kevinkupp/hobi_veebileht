@@ -1,0 +1,642 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --primary: #d36a49;
+    --primary-hover: #b85437;
+    --bg-light: #faf8f5;
+    --text-dark: #333333;
+    --nav-bg: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+}
+
+h1, h2, h3, .logo {
+    font-family: 'Playfair Display', serif;
+}
+
+.highlight {
+    font-size: 24px;
+}
+.navbar {
+    position: sticky;
+    top: 0;
+    background: var(--nav-bg);
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+    animation: anime 0.5s ease forwards;
+}
+
+/* Navbari animatsioon */
+@keyframes anime {
+    from {
+        opacity: 0;
+        transform: translate(0%, -40px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0%, 0);
+    }
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.aktiivne {
+    color: var(--primary);
+}
+
+/* nupp */
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #ffffff;
+    padding: 0.8rem 2.5rem;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.btn:hover {
+    background: var(--primary-hover);
+}
+
+.btn-block {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+}
+
+/* tausta pilt */
+.hero {
+    position: relative;
+    height: calc(100vh - 75px);
+    background-image: url('pildid/foto1.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* Tutvustus sektsioon */
+.tutvustus-sektsioon {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+/* Korvpalli ja jõusaali pildid*/
+.piltide-veerg {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.tutvustus-pilt, 
+.tutvustus-pilt2 {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.tutvustus-pilt {
+    background-image: url('pildid/foto2.jpg');
+}
+
+.tutvustus-pilt2 {
+    background-image: url('pildid/foto3.jpg');
+}
+
+.tutvustus-tekst {
+    flex: 1.5;
+    min-width: 300px;
+}
+
+.tutvustus-tekst h2 {
+    font-size: 2.8rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.tutvustus-tekst p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Soovitused */
+.soovitused-bg {
+    position: relative;
+    background-image: url('pildid/Gym.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: calc(100vh - 84px);
+}
+
+.soovitused-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(250, 248, 245, 0.5);
+}
+
+.soovitused-bg .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hobi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: stretch;
+}
+
+/* --- HOBI KAARDID JA LINGID --- */
+
+/* Hobi lingid*/
+.hobi-kaart-link {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block;
+}
+
+/* Eemaldab sinise värvi ja allajoonimise teksti pealt */
+.hobi-kaart-link * {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.hobi-kaart, .hobi-kaart-link .hobi-kaart {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover kõigile kaartidele */
+.hobi-kaart:hover, .hobi-kaart-link:hover .hobi-kaart {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.hobi-kaart-link:hover .hobi-kaart {
+    outline: 4px solid var(--primary);
+}
+
+.ikoon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hobi-kaart h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary) !important;
+}
+
+.sobivus {
+    color: #f39c12 !important;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+/* --- KONTAKT JA TESTIMONIALS --- */
+
+.kontakt-bg {
+    position: relative;
+    background-image: url('pildid/foto8.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: calc(100vh - 84px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.kontakt-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+}
+
+.kontakt-konteiner {
+    position: relative;
+    z-index: 1;
+    background: rgba(5, 12, 20, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    padding: 3rem;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 1100px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+    display: grid;
+    grid-template-columns: 1.65fr 0.95fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.kontakt-box {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.16);
+    padding: 2rem;
+    border-radius: 24px;
+    color: #ffffff;
+}
+
+.kontakt-box h3 {
+    margin-top: 0;
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+}
+
+.kontakt-box p {
+    margin: 0 0 1rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.92);
+}
+
+.kontakt-box strong {
+    display: block;
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+#testimonials {
+    padding: 10px 0;
+}
+
+#testimonials h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    letter-spacing: 0.02em;
+}
+
+.testimonials-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    padding: 1.9rem;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 45px rgba(0,0,0,0.3);
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.testimonial-header img {
+    width: 62px;
+    height: 62px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.95);
+}
+
+.user-info h4 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.stars {
+    color: #f1c40f;
+    font-size: 1rem;
+    margin-top: 0.35rem;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: rgba(255,255,255,0.92);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.testimonial-card.testimonial-plain .testimonial-text {
+    margin: 0;
+}
+
+/* --- MODAL / HÜPIAKEN --- */
+#testimonials {
+    padding: 10px 0;
+}
+
+#testimonials h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    letter-spacing: 0.02em;
+}
+
+.testimonials-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    padding: 1.9rem;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 45px rgba(0,0,0,0.3);
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 1rem;
+}
+
+.testimonial-header img {
+    width: 62px;
+    height: 62px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+.user-info h4 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.stars {
+    color: #f1c40f;
+    font-size: 1rem;
+    margin-top: 0.35rem;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: rgba(255,255,255,0.92);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.testimonial-card.testimonial-plain .testimonial-text {
+    margin: 0;
+}
+
+
+/* --- MODAL / HÜPIAKEN --- */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-overlay:target {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-box {
+    background: #fff;
+    width: 90%;
+    max-width: 900px; /* Suurendasin veidi, et video oleks ilusam */
+    padding: 40px 20px 20px 20px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+.modal-close:hover {
+    color: var(--primary);
+}
+
+.modal-video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #000;
+    transform: translateZ(0);
+}
+
+.modal-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: contain; 
+}
+
+/* --- VANAD VIDEOTE KONTEINERID --- */
+.video-konteiner {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px; 
+    padding: 20px;
+    background: #000; 
+}
+
+.video-konteiner iframe {
+    flex: 1 1 calc(33.333% - 10px); 
+    aspect-ratio: 16 / 9;
+    border: none;
+    display: block;
+    object-position: center;
+    object-fit: cover;
+}
+
+/* --- JALUS (FOOTER) --- */
+footer {
+    background: var(--text-dark);
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-links {
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.social-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary);
+}
+
+/* --- KONTEINERI JA RESPONSIVE SEADED --- */
+.container {
+    margin: auto;
+    max-width: 1100px;
+    padding: 0 20px;
+}
+
+/* --- RESPONSIVE --- */
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    .tutvustus-sektsioon {
+        flex-direction: column;
+        text-align: center;
+    }
+    .kontakt-konteiner {
+        grid-template-columns: 1fr;
+    }
+    .video-konteiner iframe {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+}
+
